@@ -1,0 +1,28 @@
+@import "./Layout.css";
+@import "./NavBar.css";
+@import "./Home.css";
+@import "./Shop.css";
+@import "./Cart.css"; 
+@import "./Error.css";
+
+:root {
+    --bg: #deedef;
+    --lighter: #2ef3f0;
+    --light: #03cecb;
+    --soft: #05777f;
+    --hard: #09545f; 
+
+}
+
+* {
+  box-sizing: border-box;
+}
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    overflow-x: hidden;
+    overflow-y: auto;
+
+}

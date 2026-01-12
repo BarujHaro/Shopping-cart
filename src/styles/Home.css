@@ -1,0 +1,92 @@
+.main-home{
+    display: flex;
+    flex-direction: column;
+height: 100%;
+}
+.text-home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-home h2, .text-home p{
+    color: var(--hard);
+}
+.text-home h2{
+    margin-top: 2.5rem;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.text-home p{
+    padding: 0 1.5rem;
+    margin-top: 2.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.button-home {
+  background-color: var(--soft);
+  color: var(--bg);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 1rem 2.2rem;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: 
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+}
+.button-home:hover {
+  background-color: var(--light);
+  color: var(--hard);
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(3, 206, 203, 0.6);
+}
+.img-home {
+  margin-top: auto;
+  width: 100%;
+  max-width: 40rem; 
+  display: block;
+}
+
+
+@media screen and (min-width: 1024px){
+    .main-home {
+        flex-direction: row;
+        height: 100%;
+        gap: 3rem;
+        overflow: hidden;
+        align-items:  center;
+    }
+    .text-home{
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .text-home h2{
+        margin-top: 0;
+        font-size: 3rem;
+        padding: 0 1.5rem;
+    }
+
+    .text-home p{
+        margin-top: 0;
+        font-size: 2rem;
+    }
+    .button-home {
+        font-size: 1.2rem;
+        padding: 1.5rem 2.7rem;
+        border-radius: 1.5rem;
+    }
+    .img-home {
+    margin-top: 0; 
+    align-self: flex-end;
+    width: 100%;
+    max-width: 40rem; 
+    display: block;
+    }
+
+}

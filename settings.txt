@@ -1,0 +1,14 @@
+components - Reusable components
+Pages      - Completed view Pages
+Layout     - Page structures
+Routes     - React Router configuration
+Services   - Backend communication
+Context    - Global states
+Hooks      - Custom hooks 
+Assets     - static files (icon,img)
+Styles     - Global Styles
+Utils      - Pure functions
+__tests__  - for pages tests
+
+
+npm install -D vitest @testing-library/react @testing-library/jest-dom jsdom
