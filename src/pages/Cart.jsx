@@ -44,8 +44,8 @@ function Cart() {
 
         <div className="cartSummary">
           <h3>Summary</h3>
-          <p>Items: <span>{getTotalItems()}</span></p>
-          <p>Total: <span>$ {getTotalPrice().toFixed(2)}</span></p>
+          <p>Items: <span>{getTotalItems}</span></p>
+          <p>Total: <span>$ {getTotalPrice.toFixed(2)}</span></p>
 
           <button className="checkoutBtn">Checkout</button>
         </div>

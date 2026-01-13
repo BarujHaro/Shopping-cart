@@ -1,6 +1,6 @@
 //Allow to manage a global cart state on the application 
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useMemo, useCallback } from "react";
 
 const ProductContext = createContext();  //Global container, to store and share data
 
@@ -8,7 +8,7 @@ export function ProductProvider({children}){
     const [cart, setCart] = useState([]); //Array of products 
 
     //ADD 
-    const addToCart = (product) => {
+    const addToCart = useCallback((product) => {
  
         setCart(prevCart => {
             const existing = prevCart.find(item => item.id === product.id); 
@@ -27,13 +27,13 @@ export function ProductProvider({children}){
             console.log( newCart);
             return newCart;
         });
-    }
+    }, []);
     //REMOVE
-    const removeItem = (productId) =>{
+    const removeItem = useCallback((productId) =>{
       setCart(prevCart => prevCart.filter(item => item.id !== productId));
-    }
+    }, []);
     //UPDATE
-    const updateQuantity = (productId, newQuantity) => {
+    const updateQuantity = useCallback((productId, newQuantity) => {
       if(newQuantity <= 0){
         removeItem(productId);
         return;
@@ -46,32 +46,30 @@ export function ProductProvider({children}){
           : item
         )
       );
-    }
+    }, []);
 
-    const getAllItems = () =>{
-      return cart;
-    }
 
-    const getTotalPrice = () =>{
+    const getTotalPrice = useMemo(() => {
       return cart.reduce((total, item) => total + (item.price*item.quantity), 0);
-    }
+    }, [cart]);
 
-    const getTotalItems = () =>{
+    const getTotalItems = useMemo(() => {
       return cart.reduce((total, item) => total + item.quantity, 0);
-    }
+    }, [cart]);
+
+const value = useMemo(() => ({
+  cart,
+  addToCart,
+  removeItem,
+  updateQuantity,
+  getTotalPrice,
+  getTotalItems
+}), [cart, addToCart, removeItem, updateQuantity, getTotalPrice, getTotalItems]);
 
 //public cart api 
   return (
     <ProductContext.Provider 
-    value={{ 
-        cart, 
-        addToCart,
-        removeItem,
-        updateQuantity,
-        getAllItems,
-        getTotalPrice,
-        getTotalItems
-        }}>
+    value={value}>
       {children}
     </ProductContext.Provider>
   );

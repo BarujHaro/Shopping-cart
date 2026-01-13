@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 function NavBar() {
   const { getTotalItems } = useCart();
-  const totalItems = getTotalItems();
+  const totalItems = getTotalItems;
 
  
   return (
